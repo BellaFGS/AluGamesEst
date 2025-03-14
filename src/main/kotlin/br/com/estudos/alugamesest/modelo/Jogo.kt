@@ -1,12 +1,8 @@
-package org.example
+package org.example.br.com.estudos.alugamesest.modelo
 
-import com.google.gson.annotations.SerializedName
+data class Jogo(val titulo: String, val capa: String ){
 
-class Jogo( @SerializedName("title") val titulo: String,
-            @SerializedName("thumb") val capa: String ){
-
-    val descricao = ""
-
+    var descricao: String? = null
 
     override fun toString(): String {
         return "\n\n\n------------------------------------------------------------------------------------------------------------------------------------------\n"+
