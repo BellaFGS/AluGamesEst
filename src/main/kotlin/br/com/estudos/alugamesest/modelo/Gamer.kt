@@ -7,7 +7,7 @@ data class Gamer(var nome:String, var email:String) {
     var usuario:String? = null
         set(value){
             field = value
-
+//teste
         }
 
 
