@@ -1,5 +1,6 @@
 package org.example.br.com.estudos.alugamesest.principal
 
+import br.com.estudos.alugamesest.modelo.Gamer
 import br.com.estudos.alugamesest.servicos.ConsumoApi
 import org.example.br.com.estudos.alugamesest.modelo.Jogo
 import java.util.*
@@ -7,6 +8,9 @@ import java.util.*
 
 fun main() {
     val leitura = Scanner(System.`in`)
+    val gamer = Gamer.criarGamer(leitura)
+    println("Cadastro concluído com sucesso. Dados do Gamer:")
+    println(gamer)
 
     do {
 
@@ -39,7 +43,7 @@ fun main() {
             } else {
                 meuJogo?.descricao = meuJogo?.titulo
             }
-            println(meuJogo)
+           gamer.jogosBuscados.add(meuJogo)
         }
 
         println("Deseja buscar um novo jogo? S/N")
@@ -47,6 +51,37 @@ fun main() {
 
     } while (resposta.equals("s", true))
 
-    println("Busca finalizada com sucesso :D")
+    println("Jogos Buscado:")
+    println(gamer.jogosBuscados)
+
+    println("\n Jogos ordenados por título: ")
+    gamer.jogosBuscados.sortBy {
+        it?.titulo
+    }
+
+    gamer.jogosBuscados.forEach{
+        println("Titulo: " + it?.titulo)
+    }
+
+    val jogosFiltrados = gamer.jogosBuscados.filter {
+        it?.titulo?.contains("batman", true) ?: false
+    }
+    println("\nJogos filtrados: ")
+    println(jogosFiltrados)
+
+    println("Deseja excluir algum jogo da lista original? S/N")
+    val opcao = leitura.nextLine()
+
+    if (opcao.equals("s", true)){
+        println(gamer.jogosBuscados)
+        println("\nInforme a posição do jogo que deseja exluir: ")
+        val posicao = leitura.nextInt()
+        gamer.jogosBuscados.removeAt(posicao)
+    }
+
+    println("\n Lista atualizada: ")
+    println(gamer.jogosBuscados)
+
+    println("Busca finalizada com sucesso.")
 }
 
