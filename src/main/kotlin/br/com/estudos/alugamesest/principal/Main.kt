@@ -3,6 +3,7 @@ package org.example.br.com.estudos.alugamesest.principal
 import br.com.estudos.alugamesest.modelo.Gamer
 import br.com.estudos.alugamesest.servicos.ConsumoApi
 import org.example.br.com.estudos.alugamesest.modelo.Jogo
+import transformarEmIdade
 import java.util.*
 
 
@@ -11,6 +12,7 @@ fun main() {
     val gamer = Gamer.criarGamer(leitura)
     println("Cadastro concluído com sucesso. Dados do Gamer:")
     println(gamer)
+    println("Idade do gamer: " + gamer.dataNascimento?.transformarEmIdade())
 
     do {
 
